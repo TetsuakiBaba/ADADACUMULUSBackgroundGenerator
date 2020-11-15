@@ -1,1 +1,2 @@
-# ADADA-CUMULUS2020BackgroundGenerator
+# ADADA+CUMULUS2020BackgroundGenerator
+This repository is built for ADADA + CUMULUS 2020 International Conference which is held on Zoom. Please use access the application page and download your own virtual background for ADADA+CUMULUS2020 !!
