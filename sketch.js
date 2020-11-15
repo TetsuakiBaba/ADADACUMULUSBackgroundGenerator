@@ -67,7 +67,5 @@ function windowResized() {
 }
 
 function draw() {
-    background(100);
     geometry.draw(0, 0, width, height);
-
 }
