@@ -47,6 +47,7 @@ class adadaGeometry {
 
         this.c_modern = ['#8dcfcc', '#8AB4DB', '#91D3E6', '#91E6C9', '#8ADBA9'];
         this.c_traditional = ['#394C87', '#513794', '#3C3A9E', '#3A6E9E', '#377F94'];
+        this.c_kawaii = ['#F272B8', '#F207A0', '#A187FF', '#F8FF24', '#80F2FF'];
         this.c = this.c_modern;
         if (isSmartPhone()) {
             this.canvas = createGraphics(1280, 720);
@@ -76,6 +77,8 @@ class adadaGeometry {
             this.c = this.c_modern;
         } else if (_color_id == 'color_traditional') {
             this.c = this.c_traditional;
+        } else if (_color_id == 'color_kawaii') {
+            this.c = this.c_kawaii;
         }
     }
     setName(_str) {
@@ -86,8 +89,7 @@ class adadaGeometry {
     }
     repattern(_n) {
         this.spot = [];
-        this.r_max = this.canvas.width;
-        console.log(random(this.canvas.width), random(this.canvas.height));
+        this.r_max = this.canvas.width / 2;
         for (let i = 0; i < _n; i++) {
             this.spot[i] = new Spot(this.canvas,
                 random(this.canvas.width), random(this.canvas.height),

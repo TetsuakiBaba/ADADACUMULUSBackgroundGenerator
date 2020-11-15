@@ -19,7 +19,6 @@ function setup() {
     // graphics stuff:
     //textFont('Sawarabi Mincho');
     var canvas = createCanvas(windowWidth - 80, (windowWidth - 80) * (9.0 / 16.0));
-    console.log(isSmartPhone());
     if (isSmartPhone()) {
         pg = createGraphics(1280, 720);
     } else {
@@ -32,7 +31,7 @@ function setup() {
     resizeCanvas(client_w, (client_w) * 9 / 16);
     frameRate(15);
 
-    geometry = new adadaGeometry(5, 100, width, image_logo);
+    geometry = new adadaGeometry(5, 100, width / 2, image_logo);
 
     select('#button_repattern').mouseClicked(Repattern);
     select('#input_name').input(changedName);
@@ -44,7 +43,6 @@ function setup() {
 }
 
 function changedColorScheme() {
-    console.log("hello");
     geometry.setColorScheme(this.value());
     let size_of_geometry = document.getElementById('number_geometry').value;
     geometry.repattern(size_of_geometry);
