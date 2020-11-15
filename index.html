@@ -9,7 +9,45 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <!-- For old IEs -->
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+
+    <!-- For new browsers - multisize ico  -->
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="favicon/favicon.ico">
+
+    <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/favicon-152-precomposed.png">
+
+    <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/favicon-144-precomposed.png">
+
+    <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/favicon-120-precomposed.png">
+
+    <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/favicon-114-precomposed.png">
+
+    <!-- For iPhone 6+ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-180-precomposed.png">
+
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/favicon-72-precomposed.png">
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/favicon-57.png">
+
+    <!-- For Old Chrome -->
+    <link rel="icon" sizes="32x32" href="favicon/favicon-32.png">
+
+    <!-- For IE10 Metro -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="favicon/favicon-144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Chrome for Android -->
+    <link rel="manifest" href="favicon/manifest.json">
+    <link rel="icon" sizes="192x192" href="favicon/favicon-192.png">
+
 
 
 </head>
@@ -26,6 +64,21 @@
 
         <div class="card" id="card_ui">
             <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Geoemtry (0-20)</span>
+                </div>
+                <input type="number" class="form-control" value=5 min=0 max=20 id="number_geometry">
+
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Color Scheme</label>
+                </div>
+                <select class="custom-select" id="select_color_scheme">
+                    <option value="color_modern" selected>modern</option>
+                    <option value="color_traditional">traditional</option>
+              </select>
+            </div>
+
+            <div class="input-group">
                 <input type="text" class="form-control" placeholder="Your name" id="input_name">
                 <input type="text" class="form-control" placeholder="Your affilication" id="input_affiliation">
                 <div class="input-group-append" id="button-addon4">
@@ -40,11 +93,14 @@
     <footer class="footer">
         <div class="container-fluid">
             <div class="row text-center">
-                <div class="col-12">ADADA+CUMULUS2020 Background Generator<br>2020 &copy; Tetsuaki Baba all rights reserved.</div>
+                <div class="col-12">
+                    <a href="https://github.com/TetsuakiBaba/ADADACUMULUS2020BackgroundGenerator">Github</a>, thanks for your feedback in advance.
+                </div>
             </div>
             <div class="row justify-content-center text-center">
-                <div class="col-12 col-md-1">
-                    <a href="http://github/TetsuakiBaba">Github</a>
+                <div class="col-12 col-md-6">
+
+                    <a href="http://adada.info/2020">ADADA+CUMULUS2020</a> Background Generator<br>2020 &copy; <a href="https://tetsuakibaba.jp">Tetsuaki Baba</a> all rights reserved.
                 </div>
             </div>
         </div>

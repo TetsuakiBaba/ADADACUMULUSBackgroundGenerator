@@ -23,7 +23,7 @@ class Spot {
         this.canvas.noStroke();
 
         let geometry_color = color(this.c);
-        geometry_color.setAlpha(200);
+        geometry_color.setAlpha(150);
         this.canvas.fill(geometry_color);
 
         this.canvas.beginShape();
@@ -43,14 +43,17 @@ class Spot {
 };
 
 class adadaGeometry {
-    constructor(_n, _r_min, _r_max) {
+    constructor(_n, _r_min, _r_max, _image_logo) {
 
-        this.c = ['#8dcfcc', '#8AB4DB', '#91D3E6', '#91E6C9', '#8ADBA9'];
+        this.c_modern = ['#8dcfcc', '#8AB4DB', '#91D3E6', '#91E6C9', '#8ADBA9'];
+        this.c_traditional = ['#394C87', '#513794', '#3C3A9E', '#3A6E9E', '#377F94'];
+        this.c = this.c_modern;
         this.canvas = createGraphics(1920, 1080);
         this.r_min = _r_min;
         this.r_max = _r_max;
-        this.name = "Etsuo Genda";
-        this.affilication = "Guru of ADADA";
+        this.name = "Tetsuaki Baba";
+        this.affilication = "Tokyo Metropolitan University";
+
         this.spot = Array(_n);
         for (let i = 0; i < _n; i++) {
             this.spot[i] = new Spot(this.canvas,
@@ -60,7 +63,16 @@ class adadaGeometry {
         }
 
         this.canvas.textFont('Helvetica');
+        this.image_logo = _image_logo;
 
+
+    }
+    setColorScheme(_color_id) {
+        if (_color_id == 'color_modern') {
+            this.c = this.c_modern;
+        } else if (_color_id == 'color_traditional') {
+            this.c = this.c_traditional;
+        }
     }
     setName(_str) {
         this.name = _str;
@@ -69,6 +81,7 @@ class adadaGeometry {
         this.affilication = _str;
     }
     repattern(_n) {
+        this.spot = [];
         for (let i = 0; i < _n; i++) {
             this.spot[i] = new Spot(this.canvas,
                 random(this.canvas.width), random(this.canvas.height),
@@ -84,7 +97,7 @@ class adadaGeometry {
     }
     draw(_x, _y, _w, _h) {
         this.update();
-        this.canvas.background('#8dcfcc');
+        this.canvas.background(this.c[0]);
         for (let i = 0; i < this.spot.length; i++) {
             this.spot[i].draw();
         }
@@ -98,21 +111,24 @@ class adadaGeometry {
 
         //  affiliation
         let text_width = this.canvas.textWidth(this.name);
-        console.log(text_width);
         this.canvas.textSize(48);
-        this.canvas.textAlign(LEFT, BOTTOM);
+        this.canvas.textAlign(LEFT, TOP);
         this.canvas.text("(" + this.affilication + ")",
-            50 + 50 + text_width,
-            45 + 72);
+            50,
+            50 + 72);
 
         // Display Conference Information
-        this.canvas.fill(255);
-        this.canvas.textAlign(LEFT, TOP);
-        this.canvas.textSize(60);
-        this.canvas.text("ADADA+CUMULUS2020",
-            1200, this.canvas.height - 120);
-        this.canvas.textSize(24.6);
-        this.canvas.text("International Conference for Asia Digital Art and Design 2020", 1200, this.canvas.height - 60);
+        // this.canvas.fill(255);
+        // this.canvas.textAlign(LEFT, TOP);
+        // this.canvas.textSize(60);
+        // this.canvas.text("ADADA+CUMULUS2020",
+        //     1200, this.canvas.height - 120);
+        // this.canvas.textSize(24.6);
+        // this.canvas.text("International Conference for Asia Digital Art and Design 2020", 1200, this.canvas.height - 60);
+
+        let w_logo = this.image_logo.width / 4;
+        let ratio = this.image_logo.height / this.image_logo.width;
+        this.canvas.image(this.image_logo, 1130, 1080 - 160, w_logo, w_logo * ratio);
         image(this.canvas, _x, _y, _w, _h);
     }
 };

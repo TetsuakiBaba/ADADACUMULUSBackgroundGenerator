@@ -1,5 +1,10 @@
 let pg;
 var geometry;
+var image_logo;
+
+function preload() {
+    image_logo = loadImage("conference_logo.png");
+}
 
 function setup() {
 
@@ -14,12 +19,27 @@ function setup() {
     resizeCanvas(client_w, (client_w) * 9 / 16);
     frameRate(15);
 
-    geometry = new adadaGeometry(5, 100, width);
+    geometry = new adadaGeometry(5, 100, width, image_logo);
+
 
     select('#button_repattern').mouseClicked(Repattern);
-    select('#input_name').changed(changedName);
-    select('#input_affiliation').changed(changedAffiliation);
+    select('#input_name').input(changedName);
+    select('#input_affiliation').input(changedAffiliation);
     select('#button_download').mouseClicked(download);
+    select('#number_geometry').changed(changedGeometry);
+    select('#select_color_scheme').changed(changedColorScheme);
+}
+
+function changedColorScheme() {
+    console.log("hello");
+    geometry.setColorScheme(this.value());
+    let size_of_geometry = document.getElementById('number_geometry').value;
+    geometry.repattern(size_of_geometry);
+}
+
+function changedGeometry() {
+    let size_of_geometry = this.value();
+    geometry.repattern(size_of_geometry);
 }
 
 function changedName() {
@@ -31,7 +51,8 @@ function changedAffiliation() {
 }
 
 function Repattern() {
-    geometry.repattern(5);
+    let size_of_geometry = document.getElementById('number_geometry').value;
+    geometry.repattern(size_of_geometry);
 }
 
 function download() {
@@ -47,34 +68,6 @@ function windowResized() {
 
 function draw() {
     background(100);
-    pg.background(100);
-    text("hello", mouseX, mouseY);
-
-    //pg.ellipse(random(pg.width), random(pg.height), 100, 100);
     geometry.draw(0, 0, width, height);
 
 }
-
-function keyPressed() {
-    if (key == 's') {
-        pg.save("myWallpaper.png");
-    }
-
-}
-
-// let pg;
-
-// function setup() {
-//     createCanvas(400, 400);
-//     pg = createGraphics(4000, 4000);
-//     pg.background(32);
-// }
-
-// function draw() {
-//     pg.ellipse(random(pg.width), random(pg.height), 100, 100);
-//     image(pg, 0, 0, width, height);
-// }
-
-// function mousePressed() {
-//     pg.save("pg.png");
-// }
