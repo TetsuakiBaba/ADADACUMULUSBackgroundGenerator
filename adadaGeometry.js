@@ -48,7 +48,11 @@ class adadaGeometry {
         this.c_modern = ['#8dcfcc', '#8AB4DB', '#91D3E6', '#91E6C9', '#8ADBA9'];
         this.c_traditional = ['#394C87', '#513794', '#3C3A9E', '#3A6E9E', '#377F94'];
         this.c = this.c_modern;
-        this.canvas = createGraphics(1920, 1080);
+        if (isSmartPhone()) {
+            this.canvas = createGraphics(1280, 720);
+        } else {
+            this.canvas = createGraphics(1920, 1080);
+        }
         this.r_min = _r_min;
         this.r_max = _r_max;
         this.name = "Tetsuaki Baba";
@@ -82,6 +86,8 @@ class adadaGeometry {
     }
     repattern(_n) {
         this.spot = [];
+        this.r_max = this.canvas.width;
+        console.log(random(this.canvas.width), random(this.canvas.height));
         for (let i = 0; i < _n; i++) {
             this.spot[i] = new Spot(this.canvas,
                 random(this.canvas.width), random(this.canvas.height),
@@ -104,18 +110,20 @@ class adadaGeometry {
 
         // Display user information
         // name
+        let font_size = this.canvas.width / 30;
+
         this.canvas.fill(255);
-        this.canvas.textSize(72);
+        this.canvas.textSize(font_size);
         this.canvas.textAlign(LEFT, TOP);
         this.canvas.text(this.name, 50, 50);
 
         //  affiliation
         let text_width = this.canvas.textWidth(this.name);
-        this.canvas.textSize(48);
+        this.canvas.textSize(font_size * 0.75);
         this.canvas.textAlign(LEFT, TOP);
         this.canvas.text("(" + this.affilication + ")",
             50,
-            50 + 72);
+            50 + font_size + 10);
 
         // Display Conference Information
         // this.canvas.fill(255);
@@ -126,9 +134,9 @@ class adadaGeometry {
         // this.canvas.textSize(24.6);
         // this.canvas.text("International Conference for Asia Digital Art and Design 2020", 1200, this.canvas.height - 60);
 
-        let w_logo = this.image_logo.width / 4;
+        let w_logo = this.canvas.width / 3;
         let ratio = this.image_logo.height / this.image_logo.width;
-        this.canvas.image(this.image_logo, 1130, 1080 - 160, w_logo, w_logo * ratio);
+        this.canvas.image(this.image_logo, this.canvas.width * 0.65, this.canvas.height * 0.86, w_logo, w_logo * ratio);
         image(this.canvas, _x, _y, _w, _h);
     }
 };
