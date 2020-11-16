@@ -80,6 +80,11 @@ class adadaGeometry {
         } else if (_color_id == 'color_kawaii') {
             this.c = this.c_kawaii;
         }
+        for (let i = 0; i < this.spot.length; i++) {
+            this.spot[i].c = this.c[int(random(this.c.length))];
+        }
+
+
     }
     setName(_str) {
         this.name = _str;

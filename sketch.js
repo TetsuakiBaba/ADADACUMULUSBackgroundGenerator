@@ -45,7 +45,7 @@ function setup() {
 function changedColorScheme() {
     geometry.setColorScheme(this.value());
     let size_of_geometry = document.getElementById('number_geometry').value;
-    geometry.repattern(size_of_geometry);
+    //    geometry.repattern(size_of_geometry);
 }
 
 function changedGeometry() {
