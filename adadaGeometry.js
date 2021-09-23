@@ -10,6 +10,8 @@ class Spot {
         this.increment_noise = 0.001;
         this.increment_noise_position = 0.002;
         this.number_of_vertex = int(random(3, 6));
+
+
         this.canvas = _canvas;
     }
 
@@ -143,7 +145,8 @@ class adadaGeometry {
 
         let w_logo = this.canvas.width / 3;
         let ratio = this.image_logo.height / this.image_logo.width;
-        this.canvas.image(this.image_logo, this.canvas.width * 0.65, this.canvas.height * 0.86, w_logo, w_logo * ratio);
+        this.canvas.imageMode(CORNER)
+        this.canvas.image(this.image_logo, this.canvas.width * 0.65, this.canvas.height * 0.85, w_logo, w_logo * ratio);
         image(this.canvas, _x, _y, _w, _h);
     }
 };
