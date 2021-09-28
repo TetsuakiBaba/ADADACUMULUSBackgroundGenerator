@@ -1,7 +1,7 @@
 # ADADA+CUMULUS Background Generator
-![](./teaser.gif)
+ <video controls src="./teaser.mp4"></video>
 
-This repository is built for ADADA + CUMULUS International Conference which is held on Zoom. Please use the application page [ADADA+CUMULUS Background Generator](https://tetsuakibaba.github.io/ADADACUMULUS2020BackgroundGenerator/) and download your own virtual background for ADADA+CUMULUS2020 !!
+This repository is built for ADADA + CUMULUS International Conference which is held on Zoom. Please use the application page [ADADA+CUMULUS Background Generator](https://tetsuakibaba.github.io/ADADACUMULUSBackgroundGenerator/) and download your own virtual background for ADADA+CUMULUS2020 !!
 
 ##  Reference
   *  [ADADA+CUMULUS 2021 International Conference](http://adada.info/2021)
