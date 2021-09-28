@@ -58,14 +58,14 @@
 
 <body>
     <div class="container-sm">
-        <div class="row justify-content-md-center mt-4">
+        <!-- <div class="row justify-content-md-center mt-4">
             <div class="col-12">
                 <p class="display-6">ADADA Background Generator </p>
             </div>
 
-        </div>
+        </div> -->
 
-        <div class="row mb-3" id="canvas">
+        <div class="row mt-5 mb-3" id="canvas">
             <div class="col-12">
                 <div class="input-group-apend" id="container">
                     <div id="sketch-holder"></div>
@@ -83,6 +83,10 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
                     role="tab" aria-controls="profile" aria-selected="false">How to use</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">about</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -135,7 +139,6 @@
                 </div>
             </div>
             <div class="tab-pane fade mt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h5>How to use</h5>
                 <video controls src="./teaser.mp4" style="width:100%"></video>
                 <br>
                 <ol>
@@ -151,6 +154,16 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="tab-pane fade mt-3" id="about" role="tabpanel" aria-labelledby="about-tab">
+                <p>ADADA+CUMULUS International Conference Virtual Background Generator is created by <a
+                        href="https://tetsuakibaba.jp">Tetsuaki Baba</a>. This code can be viewed on github. If you have
+                    any
+                    modifications, please contact me directly via github. Thanks for your contribution in advance.
+                </p>
+                <p>2021 &copy; <a href="https://tetsuakibaba.jp">Tetsuaki Baba</a> all rights
+                    reserved.</p>
+            </div>
         </div>
 
 
@@ -161,8 +174,8 @@
 
     </div>
 
-    <hr>
-    <footer class="footer  text-muted">
+
+    <!-- <footer class="footer  text-muted">
         <div class="container-fluid">
             <div class="row text-center">
                 <div class="col-12">
@@ -179,7 +192,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
 
 

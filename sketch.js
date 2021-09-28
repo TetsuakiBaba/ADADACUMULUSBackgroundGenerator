@@ -32,7 +32,7 @@ function setup() {
     canvas.parent('sketch-holder');
     frameRate(15);
 
-    geometry = new adadaGeometry(5, 100, pg.canvas.width / 2, image_logo);
+    geometry = new adadaGeometry(5, image_logo);
 
     select('#button_repattern').mouseClicked(Repattern);
     select('#input_name').input(changedName);

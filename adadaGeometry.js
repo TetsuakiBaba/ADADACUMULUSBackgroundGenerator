@@ -74,15 +74,15 @@ class Spot {
 };
 
 class adadaGeometry {
-    constructor(_n, _r_min, _r_max, _image_logo) {
+    constructor(_n, _image_logo) {
         this.c = [];
         if (isSmartPhone()) {
             this.canvas = createGraphics(1280, 720);
         } else {
             this.canvas = createGraphics(1920, 1080);
         }
-        this.r_min = _r_min;
-        this.r_max = _r_max;
+        this.r_min = 100;
+        this.r_max = this.canvas.width / 2;
         this.name = "Tetsuaki Baba";
         this.affilication = "Tokyo Metropolitan University";
 
@@ -91,13 +91,12 @@ class adadaGeometry {
             this.spot[i] = new Spot(this.canvas,
                 random(this.canvas.width), random(this.canvas.height),
                 this.c[int(random(this.c.length))],
-                random(_r_min, _r_max));
+                random(this.r_min, this.r_max));
         }
 
         this.canvas.textFont('lato');
         this.image_logo = _image_logo;
         this.is_curved = false;
-
     }
     setCurved(_flg) {
         this.is_curved = _flg;
@@ -132,6 +131,7 @@ class adadaGeometry {
                 random(this.r_min, this.r_max));
             this.spot[i].setCurved(this.is_curved);
         }
+        console.log(this.r_min, this.r_max);
     }
     update() {
 
