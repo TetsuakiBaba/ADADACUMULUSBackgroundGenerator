@@ -18,6 +18,7 @@ function setup() {
     console.log(navigator.userAgent);
     // graphics stuff:
     //textFont('Sawarabi Mincho');
+    textFont('lato');
     let client_w = document.getElementById('container').clientWidth;
     var canvas = createCanvas(client_w, (client_w) * (9.0 / 16.0));
 
@@ -39,13 +40,18 @@ function setup() {
     select('#button_download').mouseClicked(download);
     select('#number_geometry').changed(changedGeometry);
     select('#select_color_scheme').changed(changedColorScheme);
+    select('#button_curved').mouseClicked(setCurved);
+    geometry.setColorScheme(document.getElementById("select_color_scheme").value);
 
 }
 
+function setCurved() {
+    console.log(this.checked());
+    geometry.setCurved(this.checked());
+}
 function changedColorScheme() {
     geometry.setColorScheme(this.value());
     let size_of_geometry = document.getElementById('number_geometry').value;
-    //    geometry.repattern(size_of_geometry);
 }
 
 function changedGeometry() {

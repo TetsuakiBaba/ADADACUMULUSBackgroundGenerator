@@ -10,11 +10,13 @@ class Spot {
         this.increment_noise = 0.001;
         this.increment_noise_position = 0.002;
         this.number_of_vertex = int(random(3, 6));
-
-
         this.canvas = _canvas;
+        this.is_curved = false;
     }
 
+    setCurved(_flg) {
+        this.is_curved = _flg;
+    }
     draw() {
         this.param_noise = this.param_noise + this.increment_noise;
         this.position_noise_x += this.increment_noise_position;
@@ -29,16 +31,43 @@ class Spot {
         this.canvas.fill(geometry_color);
 
         this.canvas.beginShape();
-        for (let angle = 0.0; angle < 360.0; angle = angle + 360 / this.number_of_vertex) {
-            let circle_noise = 0.5 * height * noise(
-                this.param_noise + cos(radians(angle)),
-                this.param_noise + sin(radians(angle))
-            );
 
-            this.canvas.vertex(
-                this.x + (this.r + circle_noise) * cos(radians(angle)),
-                this.y + (this.r + circle_noise) * sin(radians(angle)));
+        if (this.is_curved) {
+            for (let angle = 0.0; angle < 360.0; angle = angle + 360 / this.number_of_vertex) {
+                let circle_noise = 0.5 * height * noise(
+                    this.param_noise + cos(radians(angle)),
+                    this.param_noise + sin(radians(angle))
+                );
+
+                this.canvas.curveVertex(
+                    this.x + (this.r + circle_noise) * cos(radians(angle)),
+                    this.y + (this.r + circle_noise) * sin(radians(angle)));
+            }
+
+            for (let angle = 0.0; angle < 3 * (360 / this.number_of_vertex); angle = angle + 360 / this.number_of_vertex) {
+                let circle_noise = 0.5 * height * noise(
+                    this.param_noise + cos(radians(angle)),
+                    this.param_noise + sin(radians(angle))
+                );
+
+                this.canvas.curveVertex(
+                    this.x + (this.r + circle_noise) * cos(radians(angle)),
+                    this.y + (this.r + circle_noise) * sin(radians(angle)));
+            }
         }
+        else {
+            for (let angle = 0.0; angle < 360.0; angle = angle + 360 / this.number_of_vertex) {
+                let circle_noise = 0.5 * height * noise(
+                    this.param_noise + cos(radians(angle)),
+                    this.param_noise + sin(radians(angle))
+                );
+
+                this.canvas.vertex(
+                    this.x + (this.r + circle_noise) * cos(radians(angle)),
+                    this.y + (this.r + circle_noise) * sin(radians(angle)));
+            }
+        }
+
         this.canvas.endShape();
         //image(this.canvas, 0, 0, width, height);
     }
@@ -46,11 +75,7 @@ class Spot {
 
 class adadaGeometry {
     constructor(_n, _r_min, _r_max, _image_logo) {
-
-        this.c_modern = ['#8dcfcc', '#8AB4DB', '#91D3E6', '#91E6C9', '#8ADBA9'];
-        this.c_traditional = ['#394C87', '#513794', '#3C3A9E', '#3A6E9E', '#377F94'];
-        this.c_kawaii = ['#F272B8', '#F207A0', '#A187FF', '#F8FF24', '#80F2FF'];
-        this.c = this.c_modern;
+        this.c = [];
         if (isSmartPhone()) {
             this.canvas = createGraphics(1280, 720);
         } else {
@@ -69,19 +94,22 @@ class adadaGeometry {
                 random(_r_min, _r_max));
         }
 
-        this.canvas.textFont('Helvetica');
+        this.canvas.textFont('lato');
         this.image_logo = _image_logo;
-
+        this.is_curved = false;
 
     }
-    setColorScheme(_color_id) {
-        if (_color_id == 'color_modern') {
-            this.c = this.c_modern;
-        } else if (_color_id == 'color_traditional') {
-            this.c = this.c_traditional;
-        } else if (_color_id == 'color_kawaii') {
-            this.c = this.c_kawaii;
+    setCurved(_flg) {
+        this.is_curved = _flg;
+        for (let i = 0; i < this.spot.length; i++) {
+            this.spot[i].setCurved(_flg);
         }
+    }
+    setColorScheme(_color) {
+        let str_color = _color;
+        this.c = str_color.split(',');
+        console.log(this.c);
+
         for (let i = 0; i < this.spot.length; i++) {
             this.spot[i].c = this.c[int(random(this.c.length))];
         }
@@ -102,6 +130,7 @@ class adadaGeometry {
                 random(this.canvas.width), random(this.canvas.height),
                 this.c[int(random(this.c.length))],
                 random(this.r_min, this.r_max));
+            this.spot[i].setCurved(this.is_curved);
         }
     }
     update() {
